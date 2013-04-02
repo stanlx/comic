@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%#= @webcomic.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%#= @webcomic.description %>
+</p>
+
+
+<%#= link_to 'Edit', edit_webcomic_path(@webcomic) %> |
+<%#= link_to 'Back', webcomics_path %>
+
+
+<div class="webcomic">
+    <div class="title"><%= @webcomic.title %></div>
+    <%= image_tag @webcomic.comicimage_url.to_s %>
+    <div class="description"><%= @webcomic.description %></div>
+    <div class="actions">
+      <%= link_to "edit", edit_webcomic_path %> |
+      <%= link_to "remove", @webcomic, :confirm => 'Are you sure?', :method => :delete %>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

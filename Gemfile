@@ -7,13 +7,18 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 gem 'thin'
+gem 'twitter-bootstrap-rails', '= 2.1.6'
+gem 'therubyracer'
+gem 'less-rails'
+gem 'carrierwave'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'bootstrap-sass'
+#  gem 'bootstrap-sass'
+#  gem 'twitter-bootstrap-rails', '= 2.1.6'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
