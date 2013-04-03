@@ -1,6 +1,12 @@
 Comic::Application.routes.draw do
-  resources :webcomics
-
+  resources :webcomics do
+    collection do
+      get 'first'
+      get 'latest'
+      get 'random'
+    end
+  end
+  #temp root
   root to: 'webcomics#index'   
 
   # The priority is based upon order of creation:

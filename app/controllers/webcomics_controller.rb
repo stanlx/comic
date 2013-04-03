@@ -80,4 +80,32 @@ class WebcomicsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def first
+    @webcomic = Webcomic.order("created_at ASC").first
+    respond_to do |format|
+      format.html { render 'show' }
+      format.json { render json: @webcomic }
+    end
+  end
+
+  # GET /comics/latest
+  # GET /comics/latest.json
+  def latest
+    @webcomic = Webcomic.order("created_at ASC").last
+    respond_to do |format|
+      format.html { render 'show' }
+      format.json { render json: @webcomic }
+    end
+  end
+  
+  def random
+    offset = rand(Webcomic.count)
+    @webcomic = Webcomic.first(:offset => offset)
+    respond_to do |format|
+      format.html { render 'show' }
+      format.json { render json: @webcomic }
+    end
+  end
+
 end

@@ -1,28 +1,67 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%#= @webcomic.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%#= @webcomic.description %>
-</p>
-
-
-<%#= link_to 'Edit', edit_webcomic_path(@webcomic) %> |
-<%#= link_to 'Back', webcomics_path %>
-
+<p id="notice"><%#= notice %></p>
 
 <div class="webcomic">
-    <div class="title"><%= @webcomic.title %></div>
-    <%= image_tag @webcomic.comicimage_url.to_s %>
-    <div class="description"><%= @webcomic.description %></div>
-    <div class="actions">
-      <%= link_to "edit", edit_webcomic_path %> |
-      <%= link_to "remove", @webcomic, :confirm => 'Are you sure?', :method => :delete %>
-    </div>
+    <div class="title"><h3><%= @webcomic.title %></h3></div>
+    <%= image_tag @webcomic.comicimage_url.to_s %><br/><br/>
+    <blockquote>
+      <div class="description"><%= @webcomic.description %></div>
+    </blockquote>
+
+  <div class="accordion" id="accordion2">
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">...</a>
+      </div>
+    <div id="collapseOne" class="accordion-body collapse out">
+      <div class="accordion-inner">
+        <div class="actions">
+          <%= link_to "edit", edit_webcomic_path %> |
+          <%= link_to "remove", @webcomic, :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+      </div>
+   </div>
   </div>
+</div>
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li>
+        <%= link_to first_webcomics_path, :rel => "tooltip", :title => "first comic" do %>
+          <i class="iconic-first"></i>
+        <% end %>
+      </li>
+      <li class="divider-vertical"></li>
+      <li class="<%= "disabled" if !@webcomic.prev?%>">
+        <%= link_to @webcomic.prev, :rel => "tooltip", :title => "previous comic" do %>
+          <i class="icon-backward"></i>
+        <% end %>
+      </li>
+      <li class="divider-vertical"></li>
+      <li>
+        <%= link_to webcomics_path, :rel => "tooltip", :title => "comic archive" do %>
+          <i class="icon-th-list"></i>
+        <% end %>
+      </li>
+      <li class="divider-vertical"></li>
+      <li>
+        <%= link_to random_webcomics_path, :rel => "tooltip", :title => "random comic" do %>
+          <i class="icon-random"></i>
+        <% end %>
+      </li>
+      <li class="divider-vertical"></li>
+      <li class="<%= "disabled" if !@webcomic.next?%>">
+        <%= link_to @webcomic.next, :rel => "tooltip", :title => "next comic" do %>
+          <i class="icon-forward"></i>
+        <% end %>
+      </li>
+      <li class="divider-vertical"></li>
+      <li>
+        <%= link_to latest_webcomics_path, :rel => "tooltip", :title => "latest comic" do %>
+          <i class="iconic-last"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
   <div class="clear"></div>
 </div>

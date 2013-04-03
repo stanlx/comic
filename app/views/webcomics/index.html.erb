@@ -1,19 +1,17 @@
-<h1>Listing webcomics</h1>
+<h1>Table of Contents</h1>
 
-<table>
+<table class="table table-bordered table-striped table-condensed">
   <tr>
     <th>Title</th>
     <th>Description</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @webcomics.each do |webcomic| %>
   <tr>
-    <td><%= webcomic.title %></td>
-    <td><%= webcomic.description %></td>
-    <td><%= link_to 'Show', webcomic %></td>
+    <td><%= link_to webcomic.title, webcomic %></td>
+    <td><%= link_to webcomic.description, webcomic %></td>
     <td><%= link_to 'Edit', edit_webcomic_path(webcomic) %></td>
     <td><%= link_to 'Destroy', webcomic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
