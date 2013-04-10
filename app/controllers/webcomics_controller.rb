@@ -21,8 +21,33 @@ class WebcomicsController < ApplicationController
     end
   end
 
-  # GET /webcomics/new
-  # GET /webcomics/new.json
+  def first
+    @webcomic = Webcomic.order("created_at ASC").first
+    respond_to do |format|
+      format.html { render :show}
+      format.json { render json: @webcomic }
+    end
+  end
+
+  # GET /comics/latest
+  # GET /comics/latest.json
+  def latest
+    @webcomic = Webcomic.order("created_at ASC").last
+    respond_to do |format|
+      format.html { render 'show' }
+      format.json { render json: @webcomic }
+    end
+  end
+  
+  def random
+    offset = rand(Webcomic.count)
+    @webcomic = Webcomic.first(:offset => offset)
+    respond_to do |format|
+      format.html { render 'show' }
+      format.json { render json: @webcomic }
+    end
+  end
+
   def new
     @webcomic = Webcomic.new
 
@@ -81,31 +106,5 @@ class WebcomicsController < ApplicationController
     end
   end
 
-  def first
-    @webcomic = Webcomic.order("created_at ASC").first
-    respond_to do |format|
-      format.html { render 'show' }
-      format.json { render json: @webcomic }
-    end
-  end
-
-  # GET /comics/latest
-  # GET /comics/latest.json
-  def latest
-    @webcomic = Webcomic.order("created_at ASC").last
-    respond_to do |format|
-      format.html { render 'show' }
-      format.json { render json: @webcomic }
-    end
-  end
-  
-  def random
-    offset = rand(Webcomic.count)
-    @webcomic = Webcomic.first(:offset => offset)
-    respond_to do |format|
-      format.html { render 'show' }
-      format.json { render json: @webcomic }
-    end
-  end
 
 end

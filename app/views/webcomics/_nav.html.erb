@@ -1,0 +1,42 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li>
+        <%= link_to first_webcomics_path, :rel => "tooltip", :title => "first comic" do %>
+          <i class="icon-backward"></i>
+        <% end %>
+      </li>
+      <li class="divider-vertical"></li>
+      <li class="<%= "disabled" if !@webcomic.prev?%>">
+        <%= link_to @webcomic.prev, :rel => "tooltip", :title => "previous comic" do %>
+          <i class="icon-chevron-left"></i>
+        <% end %>
+      </li>
+      <li class="divider-vertical"></li>
+      <li>
+        <%= link_to webcomics_path, :rel => "tooltip", :title => "comic archive" do %>
+          <i class="icon-th-list"></i>
+        <% end %>
+      </li>
+      <li class="divider-vertical"></li>
+      <li>
+        <%= link_to random_webcomics_path, :rel => "tooltip", :title => "random comic" do %>
+          <i class="icon-random"></i>
+        <% end %>
+      </li>
+      <li class="divider-vertical"></li>
+      <li class="<%= "disabled" if !@webcomic.next?%>">
+        <%= link_to @webcomic.next, :rel => "tooltip", :title => "next comic" do %>
+          <i class="icon-chevron-right"></i>
+        <% end %>
+      </li>
+      <li class="divider-vertical"></li>
+      <li>
+        <%= link_to latest_webcomics_path, :rel => "tooltip", :title => "latest comic" do %>
+          <i class="icon-forward"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+

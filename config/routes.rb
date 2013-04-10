@@ -1,4 +1,9 @@
 Comic::Application.routes.draw do
+#  resources :webcomics
+#  match '/webcomics/first' => 'webcomics#first', :as => :first
+#  match '/webcomics/random' => 'webcomics#random', :as => :random
+#  match '/webcomics/latest' => 'webcomics#latest', :as => :latest
+#  resources :webcomics
   resources :webcomics do
     collection do
       get 'first'
@@ -6,6 +11,7 @@ Comic::Application.routes.draw do
       get 'random'
     end
   end
+
   #temp root
   root to: 'webcomics#index'   
 
