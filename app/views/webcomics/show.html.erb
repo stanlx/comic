@@ -3,17 +3,19 @@
 <%= render 'nav'%>
 
 <div class="webcomic">
-    <div class="title"><h3><%= @webcomic.title %></h3></div>
-    <%= image_tag @webcomic.comicimage_url.to_s %><br/><br/>
-    <blockquote>
-      <div class="description"><%= @webcomic.description %></div>
-    </blockquote>
+  <div class="title"><h3><%= @webcomic.title %></h3></div>
+  <%= image_tag @webcomic.comicimage_url.to_s %><br/><br/>
+  <blockquote>
+    <div class="description"><%= @webcomic.description %></div>
+  </blockquote>
 
+  <% if user_signed_in? %>
   <div class="accordion" id="accordion2">
     <div class="accordion-group">
       <div class="accordion-heading">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">...</a>
       </div>
+
     <div id="collapseOne" class="accordion-body collapse out">
       <div class="accordion-inner">
         <div class="actions">
@@ -23,6 +25,7 @@
       </div>
    </div>
   </div>
+  <% end %>
 </div>
 
 <%= render 'nav'%>

@@ -4,20 +4,24 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
+    <% if user_signed_in? %>
     <th></th>
     <th></th>
+    <% end %>
   </tr>
 
 <% @webcomics.each do |webcomic| %>
   <tr>
     <td><%= link_to webcomic.title, webcomic %></td>
     <td><%= link_to webcomic.description, webcomic %></td>
-    <td><%= link_to 'Edit', edit_webcomic_path(webcomic) %></td>
-    <td><%= link_to 'Destroy', webcomic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if user_signed_in? %>
+      <td><%= link_to 'Edit', edit_webcomic_path(webcomic) %></td>
+      <td><%= link_to 'Destroy', webcomic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Webcomic', new_webcomic_path %>
+<% if user_signed_in? %>
+  </ br>
+  <%= link_to 'New Webcomic', new_webcomic_path %>
+<% end %>
