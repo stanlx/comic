@@ -15,3 +15,5 @@
 /tmp
 
 *database.yml*
+*db/seeds.rb
+*config/environments/production.rb
